@@ -29,12 +29,12 @@
                 <!-- Left links -->
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="dev_register">Modern Resolve</a>
+                        <a class="nav-link" href="http://localhost/modern_web/">Modern Resolve</a>
                     </li>
                 </ul>
                 <!-- Left links -->
                 <div class="d-flex align-items-center">
-                    <button @click="navigateLogin" type="button" class="btn btn-link px-3 me-2">
+                    <button @click="navigateLogin()" type="button" class="btn btn-link px-3 me-2">
                         Login
                     </button>
                     <button @click="onclientproposal()" type="button" class="btn btn-primary me-3">
