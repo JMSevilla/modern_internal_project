@@ -12,7 +12,8 @@
 <script src="resources/js/main.js" type="module"></script>
 
 <!-- Vue Integration -->
-<script src="resources/js/vue/vue_index.js"></script>
-<script src="resources/js/vue/vue_login.js"></script>
+<script src="resources/js/vue/vue_index.js" type="module"></script>
+<script src="resources/js/vue/vue_nav.js" type="module"></script>
+<script src="resources/js/vue/vue_login.js" type="module"></script>
 </body>
 </html>
