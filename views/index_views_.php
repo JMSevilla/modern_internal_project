@@ -29,7 +29,7 @@
                             <img
                             src="https://cdn3.iconfinder.com/data/icons/sustainable-development-volume-1/500/Affordable_Credit-128.png"
                             alt="No image attached"
-                            style="width: 30%; height; auto; margin-bottom : 10px;"
+                            style="width: 30%; height: auto; margin-bottom : 10px;"
                             class="img-fluid"
                             />
                             <h5>Affordable</h5>
@@ -43,7 +43,7 @@
                             <img
                                     src="https://cdn4.iconfinder.com/data/icons/marketing-and-digital-marketing/32/business_marketing_advertising_focus_group-256.png"
                                     alt="No image attached"
-                                    style="width: 30%; height; auto; margin-bottom : 10px;"
+                                    style="width: 30%; height: auto; margin-bottom : 10px;"
                                     class="img-fluid"
                             />
                             <h5>Team and client Communication</h5>
@@ -81,7 +81,19 @@
                             <h3>Join our team</h3>
                             <span>Our team need someone like you! come on and join us.</span><br>
                             <div style="display: inline;">
-                            <el-button style="margin-top: 20px; margin-right : 10px;" type="primary" plain>Register</el-button>
+                            <el-button style="margin-top: 20px; margin-right : 10px;" type="primary" plain @click="register">Register</el-button>
+                                <el-dialog
+                                title=""
+                                :visible.sync="dialogVisible"
+                                width="70%"
+                                :before-close="handleClose">
+                                <?php include("components/Registration/Registration.php"); ?>
+                                <span slot="footer" class="dialog-footer">
+                                    <el-button @click="dialogVisible = false">Cancel</el-button>
+                                    <el-button type="primary" @click="confirm">Register</el-button>
+                                </span>
+                                </el-dialog>
+                                  
                             <el-link type="primary">View teams</el-link>
                             </div>
                         </div>
