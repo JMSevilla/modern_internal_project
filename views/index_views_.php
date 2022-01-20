@@ -8,12 +8,7 @@
                 <div class="col-sm">
                     <el-card shadow="always">
                         <center>
-                            <img
-                            src="https://cdn2.iconfinder.com/data/icons/popicon-part-1/256/02-128.png"
-                            alt="No image attached"
-                            style="width: 30%; height: auto; margin-bottom : 10px;"
-                            class="img-fluid"
-                            />
+                            <img src="https://cdn2.iconfinder.com/data/icons/popicon-part-1/256/02-128.png" alt="No image attached" style="width: 30%; height: auto; margin-bottom : 10px;" class="img-fluid" />
                             <h5>We propose these services.</h5>
                             <p>
                                 *Quality and Evaluation.
@@ -26,12 +21,7 @@
                 <div class="col-sm">
                     <el-card shadow="always">
                         <center>
-                            <img
-                            src="https://cdn3.iconfinder.com/data/icons/sustainable-development-volume-1/500/Affordable_Credit-128.png"
-                            alt="No image attached"
-                            style="width: 30%; height: auto; margin-bottom : 10px;"
-                            class="img-fluid"
-                            />
+                            <img src="https://cdn3.iconfinder.com/data/icons/sustainable-development-volume-1/500/Affordable_Credit-128.png" alt="No image attached" style="width: 30%; height: auto; margin-bottom : 10px;" class="img-fluid" />
                             <h5>Affordable</h5>
                             <p>*We can provide you a reasonable pricing.</p>
                         </center>
@@ -40,12 +30,7 @@
                 <div class="col-sm">
                     <el-card shadow="always">
                         <center>
-                            <img
-                                    src="https://cdn4.iconfinder.com/data/icons/marketing-and-digital-marketing/32/business_marketing_advertising_focus_group-256.png"
-                                    alt="No image attached"
-                                    style="width: 30%; height: auto; margin-bottom : 10px;"
-                                    class="img-fluid"
-                            />
+                            <img src="https://cdn4.iconfinder.com/data/icons/marketing-and-digital-marketing/32/business_marketing_advertising_focus_group-256.png" alt="No image attached" style="width: 30%; height: auto; margin-bottom : 10px;" class="img-fluid" />
                             <h5>Team and client Communication</h5>
                             <p>*We are able to converse effectively.
 
@@ -61,12 +46,7 @@
             <div class="container">
                 <div class="row" style="margin-top: 30px; background-color: #fcfcfc; padding: 50px;">
                     <div class="col-sm">
-                        <img
-                                src="https://cdn.dribbble.com/users/19849/screenshots/13934663/media/f55bf923be38e4fc1b77b53b51a51e07.png?compress=1&resize=1200x900"
-                                alt="no image attached"
-                                style="width: 100%; height: auto;"
-                                class="img-fluid"
-                        />
+                        <img src="https://cdn.dribbble.com/users/19849/screenshots/13934663/media/f55bf923be38e4fc1b77b53b51a51e07.png?compress=1&resize=1200x900" alt="no image attached" style="width: 100%; height: auto;" class="img-fluid" />
                     </div>
                     <div class="col-sm">
                         <div style="margin-top: 30px;">
@@ -81,30 +61,23 @@
                             <h3>Join our team</h3>
                             <span>Our team need someone like you! come on and join us.</span><br>
                             <div style="display: inline;">
-                            <el-button style="margin-top: 20px; margin-right : 10px;" type="primary" plain @click="register">Register</el-button>
-                                <el-dialog
-                                title=""
-                                :visible.sync="dialogVisible"
-                                width="70%"
-                                :before-close="handleClose">
-                                <?php include("components/Registration/Registration.php"); ?>
-                                <span slot="footer" class="dialog-footer">
-                                    <el-button @click="dialogVisible = false">Cancel</el-button>
-                                    <el-button type="primary" @click="onregister()">Register</el-button>
-                                </span>
+                                <el-button style="margin-top: 20px; margin-right : 10px;" type="primary" plain @click="register">Register</el-button>
+                                <el-dialog title="" :visible.sync="dialogVisible" width="70%" :before-close="handleClose">
+                                    <h3>Registration <el-tag type="success">BETA v1.0</el-tag>
+                                    </h3>
+                                    <?php include("components/Registration/Registration.php"); ?>
+                                    <span slot="footer" class="dialog-footer">
+                                        <el-button @click="dialogVisible = false">Cancel</el-button>
+                                        <el-button type="primary" v-loading.fullscreen.lock="fullscreenLoading" @click="onregister()">Register</el-button>
+                                    </span>
                                 </el-dialog>
-                                  
-                            <el-link type="primary">View teams</el-link>
+
+                                <el-link type="primary">View teams</el-link>
                             </div>
                         </div>
                     </div>
                     <div class="col-sm">
-                        <img
-                                src="https://cdn.dribbble.com/users/2411489/screenshots/14413154/media/e7ef8bb4f02fcc61fc360497bd258d03.png?compress=1&resize=1200x900"
-                                alt="no image attached"
-                                style="width: 100%; height: auto;"
-                                class="img-fluid"
-                        />
+                        <img src="https://cdn.dribbble.com/users/2411489/screenshots/14413154/media/e7ef8bb4f02fcc61fc360497bd258d03.png?compress=1&resize=1200x900" alt="no image attached" style="width: 100%; height: auto;" class="img-fluid" />
                     </div>
                 </div>
             </div>

@@ -1,5 +1,6 @@
 const env = { 
     env_url : 'app/api',
+    required: [],
     loginRoute : {
         loginHelper : 'loginHelper.php'
     },
@@ -14,7 +15,7 @@ class requestConfiguration {
             new requestValidation().validateLogin(object)
             .then(r => {
                 if(r === "empty handed") {
-                    return resolve("invalid")
+                    return resolve();
                 }else{
                     return new requestSender().loginRequest(object).then(r => {
                         return resolve(r)
@@ -26,12 +27,16 @@ class requestConfiguration {
     registrationRequest(object) {
         return new Promise(resolve => {
             new requestValidation().validateRegistration(object).then(r => {
-                if(r === "empty handed"){
-                    return resolve("invalid");
-                }else{ 
-                    return new requestSender().registerRequest(object).then(r => {
-                        return resolve(r)
-                    })
+                if(JSON.parse(r)[0].label === "emptyHanded"){
+                    return resolve(r)
+                } else if(JSON.parse(r)[0].label === "mismatchPassword"){
+                    return resolve(r)
+                } else if(JSON.parse(r)[0].label === "password8MaxLength"){
+                    return resolve(r)
+                }else{
+                        return new requestSender().registerRequest(object).then(r => {
+                            return resolve(r)
+                         })
                 }
             })
         })
@@ -51,12 +56,18 @@ class requestValidation {
     validateRegistration(object) {
         return new Promise(resolve => {
             if(!object.firstname || !object.lastname){
-                return resolve("empty handed");
+                env.required.push({label : 'emptyHanded'})
+                return resolve(JSON.stringify(env.required));
             } else if(object.password != object.cpass) {
-                return resolve("mismatch password");
+                env.required.push({label : 'mismatchPassword'})
+                return resolve(JSON.stringify(env.required));
+            } else if(object.password.length <= 8){
+                env.required.push({label : 'password8MaxLength'})
+                return resolve(JSON.stringify(env.required))
             }
             else{
-                return resolve("not empty");
+                env.required.push({label : 'notEmpty'})
+                return resolve(JSON.stringify(env.required))
             }
         })
     }
