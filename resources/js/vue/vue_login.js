@@ -4,7 +4,7 @@ new Vue({
     el : '#vue_signin',
     data: () => ({
         task : {
-            username : '', password : '',
+            email : '', password : '',
             triggerLogin: true
         },
         fullscreenLoading: false
