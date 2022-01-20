@@ -2,6 +2,9 @@ const env = {
     env_url : 'app/api',
     loginRoute : {
         loginHelper : 'loginHelper.php'
+    },
+    regiterRoute : {
+        registerHelper : 'registerHelper.php'
     }
 }
 
@@ -20,6 +23,19 @@ class requestConfiguration {
             })
         })
     }
+    registrationRequest(object) {
+        return new Promise(resolve => {
+            new requestValidation().validateRegistration(object).then(r => {
+                if(r === "empty handed"){
+                    return resolve("invalid");
+                }else{ 
+                    return new requestSender().registerRequest(object).then(r => {
+                        return resolve(r)
+                    })
+                }
+            })
+        })
+    }
 }
 
 class requestValidation {
@@ -32,6 +48,18 @@ class requestValidation {
             }
         })
     }
+    validateRegistration(object) {
+        return new Promise(resolve => {
+            if(!object.firstname || !object.lastname){
+                return resolve("empty handed");
+            } else if(object.password != object.cpass) {
+                return resolve("mismatch password");
+            }
+            else{
+                return resolve("not empty");
+            }
+        })
+    }
 }
 
 class requestSender {
@@ -39,6 +67,13 @@ class requestSender {
         return new Promise(resolve => {
             $.post(env.env_url + `/helpers/` + env.loginRoute.loginHelper, object,
             response => {
+                return resolve(response)
+            })
+        })
+    }
+    registerRequest(object) {
+        return new Promise(resolve => {
+            $.post(env.env_url + `/helpers/` + env.regiterRoute.registerHelper, object, (response) => {
                 return resolve(response)
             })
         })

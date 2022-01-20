@@ -16,6 +16,10 @@ class LoginParams {
 
 }
 
+class RegisterParams {
+    public static $istype;
+}
+
 class Database {
     
 
@@ -67,5 +71,8 @@ class Database {
                 return json_encode($isArray);
             break;
         }
+    }
+    public function php_password_encryptor($password){
+        return password_hash($password, PASSWORD_DEFAULT);
     }
 }

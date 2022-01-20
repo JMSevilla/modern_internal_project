@@ -90,7 +90,7 @@
                                 <?php include("components/Registration/Registration.php"); ?>
                                 <span slot="footer" class="dialog-footer">
                                     <el-button @click="dialogVisible = false">Cancel</el-button>
-                                    <el-button type="primary" @click="confirm">Register</el-button>
+                                    <el-button type="primary" @click="onregister()">Register</el-button>
                                 </span>
                                 </el-dialog>
                                   

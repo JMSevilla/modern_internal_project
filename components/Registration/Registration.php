@@ -5,34 +5,35 @@
             <label for="">Fisrtname</label>
             <el-input
             placeholder="Enter Fisrtname"
-            v-modal="firstname"
+            v-model="task.firstname"
             ></el-input>
         </div>
         <div class="col-sm-6">
             <label for="">Lastname</label>
             <el-input
             placeholder="Enter Lastname"
-            v-modal="lastname"
+            v-model="task.lastname"
             ></el-input>
         </div>
         <div class="col-sm-6">
             <label for="">Email</label>
             <el-input
             placeholder="Enter Email"
-            v-modal="email"></el-input>
+            type="email"
+            v-model="task.email"></el-input>
         </div>
         <div class="col-sm-6">
             <label for="">Address</label>
             <el-input
             placeholder="Enter Address"
-            v-modal="address"
+            v-model="task.address"
             ></el-input>
         </div>
         <div class="col-sm-6">
             <label for="">Desired Roles</label>
-            <el-select v-model="value" placeholder="Desired Roles" style="width: 100%;">
+            <el-select v-model="task.roles" placeholder="Desired Roles" style="width: 100%;">
                 <el-option
-                v-for="item in options"
+                v-for="item in Optionroles"
                 :key="item.value"
                 :label="item.label"
                 :value="item.value">
@@ -41,9 +42,9 @@
         </div>
         <div class="col-sm-6">
             <label for="">Occupation</label>
-            <el-select v-model="value" placeholder="Occupation" style="width: 100%;">
+            <el-select v-model="task.occupation" placeholder="Occupation" style="width: 100%;">
                 <el-option
-                v-for="item in options"
+                v-for="item in OptionOccupation"
                 :key="item.value"
                 :label="item.label"
                 :value="item.value">
@@ -54,25 +55,20 @@
             <label for="">Password</label>
             <el-input
             placeholder="Enter Password"
-            v-modal="password"
+            v-model="task.password"
+            type="password"
+            clearable
             ></el-input>
         </div>
         <div class="col-sm-6">
         <label for="">Confirm Password</label>
             <el-input
             placeholder="Confirm Password"
-            v-modal=""></el-input>
+            type="password"
+            clearable
+            v-model="task.cpass"></el-input>
         </div>
         <div class="col-sm-6"></div>
     </div>
 </div>
 
-<script>
-    export default {
-        data() {
-            return {
-                
-            }
-        }
-    }
-</script>

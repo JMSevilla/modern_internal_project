@@ -12,7 +12,7 @@ class LoginController extends Database implements LoginInterface{
         $server = new Server();
         if($server->checkServer()){
             Database::php_prepare($loginQueries->selectionQuery("users", "loginQuery"));
-            Database::php_dynamics(":uname", $data['username']);
+            Database::php_dynamics(":email", $data['email']);
             if(Database::php_exec()){
                 if(Database::php_row()){
                     $get = Database::php_fetch_row();
