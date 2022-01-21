@@ -66,6 +66,9 @@ class Database
     {
         return Params::$stmt->fetch(PDO::FETCH_ASSOC);
     }
+    public function php_fetchAll_row(){
+        return Params::$stmt->fetchAll();
+    }
     public function php_password_verify($request, $args)
     {
         return password_verify($request, $args);
@@ -77,7 +80,7 @@ class Database
     ) {
         switch ($bool) {
             case $payload == "single":
-                return json_encode($isArray);
+                return json_encode($isArray, JSON_FORCE_OBJECT);
                 break;
         }
     }

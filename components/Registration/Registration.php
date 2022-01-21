@@ -18,16 +18,16 @@
             <el-input placeholder="Enter Address" v-model="task.address"></el-input>
         </div>
         <div class="col-sm-6">
-            <label for="">Desired Roles</label>
+            <label for="">Department</label>
             <el-select v-model="task.roles" placeholder="Desired Roles" style="width: 100%;">
-                <el-option v-for="item in Optionroles" :key="item.value" :label="item.label" :value="item.value">
+                <el-option v-for="item in Optionroles" :key="item.roleName" :label="item.roleName" :value="item.roleName">
                 </el-option>
             </el-select>
         </div>
         <div class="col-sm-6">
             <label for="">Occupation</label>
             <el-select v-model="task.occupation" placeholder="Occupation" style="width: 100%;">
-                <el-option v-for="item in OptionOccupation" :key="item.value" :label="item.label" :value="item.value">
+                <el-option v-for="item in OptionOccupation" :key="item.occupationName" :label="item.occupationName" :value="item.occupationName">
                 </el-option>
             </el-select>
         </div>

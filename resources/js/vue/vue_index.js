@@ -1,11 +1,30 @@
 ELEMENT.locale(ELEMENT.lang.en)
 import __constructJS from "../main.js"
+// import JSONConfiguration from "../main.js";
 new Vue({
     el : '#index_app',
+    created() {
+        this.getAllDepartment();
+        this.getAlloccupation();
+    },
     methods: {
         register: function() {
             this.dialogVisible = true;
             
+        },
+        getAllDepartment: function() {
+            __constructJS.departmentConfiguration().then(res => {
+                __constructJS.ResponseConfiguration(res).then(r => {
+                   this.Optionroles = r[0];
+                })
+            })
+        },
+        getAlloccupation: function() {
+            __constructJS.occupationConfigation().then(res => {
+                __constructJS.ResponseConfiguration(res).then(r => {
+                    this.OptionOccupation = r[0];
+                })
+            })
         },
         onnavigateLogin(){
             alert("hello world")
@@ -16,67 +35,76 @@ new Vue({
             setTimeout(() => {
                 __constructJS.registrationRequest(this.task)
             .then(response => {
-               let __debounce = JSON.parse(response)
-               switch(true){
-                   case __debounce[0].label == "emptyHanded":
-                        this.fullscreenLoading = false;
-                        this.dialogVisible = false;
-                        this.$notify.error({
-                            title: 'Empty',
-                            message: 'Empty fields, please retry',
-                            offset: 100
-                          });
-                          return false;
-                   case __debounce[0].label == "mismatchPassword":
-                        this.fullscreenLoading = false;
-                        this.dialogVisible = false;
-                        this.$notify.error({
-                            title: 'Mismatch Password',
-                            message: 'Your password does not match',
-                            offset: 100
-                        });
-                        return false;  
-                   case __debounce[0].label == "password8MaxLength":
-                        this.fullscreenLoading = false;
-                        this.dialogVisible = false;
-                        this.$notify.error({
-                            title: 'Password maximum of 8',
-                            message: 'The password must be maximum of 8 characters',
-                            offset: 100
-                        });
-                        return false; 
-                   case __debounce.success_admin == 200:
+               __constructJS.ResponseConfiguration(response).then(__debounce => {
+                   this.fullscreenLoading = false;
+                    if(__debounce[0].key == "emptyHanded")
+                        {
+                            this.fullscreenLoading = false;
+                            this.dialogVisible = false;
+                            this.$notify.error({
+                                title: 'Empty',
+                                message: 'Empty fields, please retry',
+                                offset: 100
+                              });
+                        }
+                        
+                    else if(__debounce[0].key == "mismatchPassword")
+                         {
+                            this.fullscreenLoading = false;
+                            this.dialogVisible = false;
+                            this.$notify.error({
+                                title: 'Mismatch Password',
+                                message: 'Your password does not match',
+                                offset: 100
+                            });
+                         }  
+                    else if(__debounce[0].key == "password8MaxLength")
+                         {
+                            this.fullscreenLoading = false;
+                            this.dialogVisible = false;
+                            this.$notify.error({
+                                title: 'Password maximum of 8',
+                                message: 'The password must be maximum of 8 characters',
+                                offset: 100
+                            });
+                         }
+                    else if (__debounce[0].key == "success_admin")
+                         {
+                            this.fullscreenLoading = false;
+                            this.dialogVisible = false;
+                            //reset fields
+                            this.$notify.success({
+                                title: 'You can now login !',
+                                dangerouslyUseHTMLString: true,
+                                message: '<a class="btn btn-primary btn-sm" href="http://localhost/modern_project/modern_internal_project/login">Click here</a>'
+                              });
+                         }
+                    else if (__debounce[0].key == "exist_email")
+                         {
+                            this.fullscreenLoading = false;
+                            this.task.email = null;
+                            this.$notify.error({
+                                title: 'Invalid',
+                                message: 'Email already exist',
+                                offset: 100
+                              });
+                         }
+                    else if (__debounce[0].key == "success_user")
+                     {
                         this.fullscreenLoading = false;
                         this.dialogVisible = false;
                         //reset fields
                         this.$notify.success({
-                            title: 'You can now login !',
-                            dangerouslyUseHTMLString: true,
-                            message: '<a class="btn btn-primary btn-sm" href="http://localhost/modern_project/modern_internal_project/login">Click here</a>'
-                          });
-                        return true;
-                   case __debounce.exist_email == 505:
-                        this.fullscreenLoading = false;
-                        this.task.email = null;
-                        this.$notify.error({
-                            title: 'Invalid',
-                            message: 'Email already exist',
+                            title: 'Well Done! ',
+                            message: 'Kindly wait for the admin approval',
                             offset: 100
                           });
-                          return false;
-                   case __debounce.success_user == 200:
-                    this.fullscreenLoading = false;
-                    this.dialogVisible = false;
-                    //reset fields
-                    this.$notify.success({
-                        title: 'Well Done! ',
-                        message: 'Kindly wait for the admin approval',
-                        offset: 100
-                      });
-                    return true;
-                   default:
-                        return alert("Problem Encountered");
-               }
+                     }
+                    else{
+                          alert("Problem Encountered");
+                    }
+                
+               })
             })
             }, 3000)
         },
@@ -98,12 +126,8 @@ new Vue({
                 email : null,
                 address : null, roles : null, occupation : null, password :null, cpass: null, trigger: 1
             },
-            Optionroles: [
-            {
-                label : 'test 1', value: 'test'
-            }
-            ],
-            OptionOccupation : [{label : 'test occupation', value: 'test'}]
+            Optionroles: [],
+            OptionOccupation : []
 
         }
     }

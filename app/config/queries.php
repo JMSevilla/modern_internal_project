@@ -6,6 +6,7 @@ interface queryInterface
     function RegisterQuery($table, $args);
     function RegisterQueryAdmin($table, $args);
     function checkIsType($table, $args);
+    function getAllDepartment($table, $args);
 }
 
 class Queries
@@ -44,6 +45,18 @@ class Queries
             return $sql;
         }
     }
+    function getAllDepartment($table, $args){
+        if($args == "registration/getAllDepartment"){
+            $sql = "select distinct roleName from " . $table . "";
+            return $sql;
+        }
+    }
+    function getAlloccupation($table, $args){
+        if($args == "registration/getAlloccupation"){
+            $sql = "select distinct occupationName from ". $table ."";
+            return $sql;
+        }
+    }
 }
 
 class Server
@@ -51,5 +64,8 @@ class Server
     function checkServer()
     {
         return $_SERVER["REQUEST_METHOD"] == "POST";
+    }
+    function checkGETServer(){
+        return $_SERVER["REQUEST_METHOD"] == "GET";
     }
 }
