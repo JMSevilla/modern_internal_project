@@ -8,7 +8,8 @@ const env = {
     regiterRoute : {
         registerHelper : 'registerHelper.php',
         departmentGetter : 'Department.php',
-        occupationGetter : 'occupation.php'
+        occupationGetter : 'occupation.php',
+        sercontentGetter : 'ServicesContent.php'
     },
     jsonHelper : null
 }
@@ -74,6 +75,13 @@ class requestConfiguration extends JSONConfiguration {
             })
         })
     }
+    servicescontentConfiguration(){
+        return new Promise(resolve => {
+            return new requestSender().servicescontentRequest().then(resp => {
+                return resolve(resp)
+            })
+        })
+    }
 }
 
 class requestValidation {
@@ -135,6 +143,13 @@ class requestSender {
     occupationRequest(){
         return new Promise(resolve =>{
             $.get(env.env_url_get + env.regiterRoute.occupationGetter, (response) => {
+                return resolve(response)
+            })
+        })
+    }
+    servicescontentRequest(){
+        return new Promise(resolve => {
+            $.get(env.env_url_get + env.regiterRoute.sercontentGetter, (response) => {
                 return resolve(response)
             })
         })

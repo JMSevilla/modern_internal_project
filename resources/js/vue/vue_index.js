@@ -6,6 +6,7 @@ new Vue({
     created() {
         this.getAllDepartment();
         this.getAlloccupation();
+        this.getServicesContent();
     },
     methods: {
         register: function() {
@@ -23,6 +24,14 @@ new Vue({
             __constructJS.occupationConfigation().then(res => {
                 __constructJS.ResponseConfiguration(res).then(r => {
                     this.OptionOccupation = r[0];
+                })
+            })
+        },
+        getServicesContent: function() {
+            __constructJS.servicescontentConfiguration().then(res => {
+                console.log(res);
+                __constructJS.ResponseConfiguration(res).then(r => {
+                    
                 })
             })
         },
