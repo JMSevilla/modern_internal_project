@@ -1,4 +1,4 @@
-const env = { 
+const env = {
     env_url : 'app/api',
     env_url_get: 'app/api/Controllers/GET/',
     required: [],
@@ -28,10 +28,12 @@ class requestConfiguration extends JSONConfiguration {
         return new Promise(resolve => {
             new requestValidation().validateLogin(object)
             .then(r => {
-                if(r === "empty handed") {
-                    return resolve();
+                if(JSON.parse(r)[0].key === "emptyHanded") {
+                  env.required=[];
+                    return resolve(r);
                 }else{
                     return new requestSender().loginRequest(object).then(r => {
+                      console.log(r)
                         return resolve(r)
                     })
                 }
@@ -77,10 +79,12 @@ class requestConfiguration extends JSONConfiguration {
 class requestValidation {
     validateLogin(object) {
         return new Promise(resolve => {
-            if(!object.username || !object.password){
-                return resolve("empty handed")
+            if(!object.email || !object.password){
+              env.required.push({key : 'emptyHanded'})
+                return resolve(JSON.stringify(env.required))
             }else{
-                return resolve("not empty");
+              env.required.push({key : 'notEmpty'})
+                return resolve(JSON.stringify(env.required))
             }
         })
     }
