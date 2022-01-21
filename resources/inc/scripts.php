@@ -5,7 +5,8 @@
 <script src="https://unpkg.com/vue/dist/vue.js"></script>
 
 <script src="https://unpkg.com/element-ui/lib/index.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/element-ui/2.15.7/locale/en.min.js" integrity="sha512-tFW30buD0d2p1ncQiM9FtIWruxY8cnB/DmSjrrRxWxlTr6om+DSsxMnknk5t6bs6/1/d6G21/itRYZ2Pmu7CdA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://unpkg.com/element-ui/lib/umd/locale/en.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/element-ui/2.15.7/locale/en.min.js" integrity="sha512-tFW30buD0d2p1ncQiM9FtIWruxY8cnB/DmSjrrRxWxlTr6om+DSsxMnknk5t6bs6/1/d6G21/itRYZ2Pmu7CdA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
 <script src="resources/js/main.js" type="module"></script>
 
 <!-- Vue Integration -->

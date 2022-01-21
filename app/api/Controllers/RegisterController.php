@@ -22,7 +22,7 @@ class RegisterController extends Database implements RegisterInterface
             Database::php_dynamics(":email", $data['email']);
             if (Database::php_exec()) {
                 if (Database::php_row()) {
-                    echo Database::php_responses(true, "single", array("exist_email" => 505));
+                    echo Database::php_responses(true, "single", (object)[0 => array("key" => "exist_email")]);
                 } else {
                     Database::php_query($q->checkIsType("check_is_type"));
                     if (Database::php_exec()) {
@@ -39,7 +39,7 @@ class RegisterController extends Database implements RegisterInterface
                 echo Database::php_responses(
                     true,
                     "single",
-                    array("invalid_execution" => 404)
+                    (object)[0 => array("key" => 404)]
                 );
             }
         }
@@ -60,7 +60,7 @@ class RegisterController extends Database implements RegisterInterface
             echo Database::php_responses(
                 true,
                 "single",
-                array("success_admin" => 200)
+                (object)[0 => array("key" => "success_admin")]
             );
         }
     }
@@ -79,7 +79,7 @@ class RegisterController extends Database implements RegisterInterface
             echo Database::php_responses(
                 true,
                 "single",
-                array("success_user" => 200)
+                (object)[0 => array("key" => "success_user")]
             );
         }
     }
