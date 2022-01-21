@@ -10,7 +10,7 @@ new Vue({
     methods: {
         register: function() {
             this.dialogVisible = true;
-            
+
         },
         getAllDepartment: function() {
             __constructJS.departmentConfiguration().then(res => {
@@ -30,7 +30,7 @@ new Vue({
             alert("hello world")
         },
         onregister: function() {
-            
+
             this.fullscreenLoading = true;
             setTimeout(() => {
                 __constructJS.registrationRequest(this.task)
@@ -47,7 +47,7 @@ new Vue({
                                 offset: 100
                               });
                         }
-                        
+
                     else if(__debounce[0].key == "mismatchPassword")
                          {
                             this.fullscreenLoading = false;
@@ -57,7 +57,7 @@ new Vue({
                                 message: 'Your password does not match',
                                 offset: 100
                             });
-                         }  
+                         }
                     else if(__debounce[0].key == "password8MaxLength")
                          {
                             this.fullscreenLoading = false;
@@ -103,7 +103,7 @@ new Vue({
                     else{
                           alert("Problem Encountered");
                     }
-                
+
                })
             })
             }, 3000)
@@ -121,8 +121,8 @@ new Vue({
             dialogVisible: false,
             fullscreenLoading: false,
             task: {
-                firstname : null, 
-                lastname : null, 
+                firstname : null,
+                lastname : null,
                 email : null,
                 address : null, roles : null, occupation : null, password :null, cpass: null, trigger: 1
             },

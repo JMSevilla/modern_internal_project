@@ -1,9 +1,9 @@
 <label>Enter username</label>
                     <el-input
                     type="text"
-                    placeholder="Enter username"
+                    placeholder="Enter email"
                     clearable
-                    v-model="task.username"
+                    v-model="task.email"
                     style="margin-top: 5px; margin-bottom: 5px;"
                     ></el-input>
 
@@ -25,5 +25,3 @@
         margin-top: 5px; margin-bottom: 15px;"
         v-loading.fullscreen.lock="fullscreenLoading"
         >Sign in</el-button>
-
-                    

@@ -21,29 +21,35 @@ class LoginController extends Database implements LoginInterface{
                     LoginParams::$status = $get['status'];
                     if(
                         Database::php_password_verify($data['password'],
-                     LoginParams::$password)
+                        LoginParams::$password)
                      ){
                         if(LoginParams::$status == '1'){
                             if(LoginParams::$istype == '1'){
                                 echo Database::php_responses(
                                     true,
                                     "single",
-                                    array("test" => 200)
+                                    (object)[0 => array("key" => "ADMIN_SUCCESS")]
                                 );
                             }
                         }else{
                             echo Database::php_responses(
                                 true,
                                 "single",
-                                array("DEACTIVATE" => 303)
+                                (object)[0 => array("key" => "DEACTIVATED")]
                             );
                         }
+                    }else{
+                      echo Database::php_responses(
+                          true,
+                          "single",
+                          (object)[0 => array("key" => "INVALID_PASSWORD")]
+                      );
                     }
                 }else{
                     echo Database::php_responses(
                         true,
                         "single",
-                        array("NOT_FOUND" => 404)
+                        (object)[0 => array("key" => "NOTFOUND")]
                     );
                 }
             }else{
