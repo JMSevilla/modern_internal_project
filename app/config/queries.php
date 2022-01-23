@@ -57,6 +57,12 @@ class Queries
             return $sql;
         }
     }
+    function getServicesContent($table, $args){
+        if($args == "ServiceContent"){
+            $sql = "select * from ". $table ."";
+            return $sql;
+        }
+    }
 }
 
 class Server
