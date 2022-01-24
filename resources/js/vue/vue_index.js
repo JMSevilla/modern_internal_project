@@ -8,7 +8,19 @@ new Vue({
         this.getAlloccupation();
         this.getServicesContent();
     },
+    mounted(){
+        this.tokenScanning();
+    },
     methods: {
+        tokenScanning: function(){
+            __constructJS.tokenConfiguration().then(r => {
+               __constructJS.ResponseConfiguration(r).then(__debounce => {
+                   if(__debounce[0].key === 'admin_exist_token'){
+                       window.location.href = 'http://localhost/modern_web/admin'
+                   }
+               })
+            })
+        },
         register: function() {
             this.dialogVisible = true;
 

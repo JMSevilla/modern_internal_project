@@ -1,6 +1,7 @@
 const env = {
     env_url : 'app/api',
     env_url_get: 'app/api/Controllers/GET/',
+    env_token_url: 'app/api/Controllers/Token/',
     required: [],
     loginRoute : {
         loginHelper : 'loginHelper.php'
@@ -10,6 +11,9 @@ const env = {
         departmentGetter : 'Department.php',
         occupationGetter : 'occupation.php',
         sercontentGetter : 'ServicesContent.php'
+    },
+    tokenization : {
+        tokenRoute : 'tokenization.php'
     },
     jsonHelper : null
 }
@@ -75,9 +79,9 @@ class requestConfiguration extends JSONConfiguration {
             })
         })
     }
-    servicescontentConfiguration(){
-        return new Promise(resolve => {
-            return new requestSender().servicescontentRequest().then(resp => {
+    tokenConfiguration(){
+        return new Promise((resolve) => {
+            return new requestSender().scantokenRequest().then(resp => {
                 return resolve(resp)
             })
         })
@@ -147,9 +151,12 @@ class requestSender {
             })
         })
     }
-    servicescontentRequest(){
+    scantokenRequest(){
         return new Promise(resolve => {
-            $.get(env.env_url_get + env.regiterRoute.sercontentGetter, (response) => {
+            const req = { 
+                requestToken : true
+            }
+            $.post(env.env_token_url + env.tokenization.tokenRoute, req, (response) => {
                 return resolve(response)
             })
         })
