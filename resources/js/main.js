@@ -9,7 +9,8 @@ const env = {
     regiterRoute : {
         registerHelper : 'registerHelper.php',
         departmentGetter : 'Department.php',
-        occupationGetter : 'occupation.php'
+        occupationGetter : 'occupation.php',
+        sercontentGetter : 'ServicesContent.php'
     },
     tokenization : {
         tokenRoute : 'tokenization.php'
