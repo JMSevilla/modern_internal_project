@@ -10,7 +10,7 @@
 
 
                 <?php
-                include("views/admin/admin_views.php");
+                include("views/admin/admin_views_adduser.php");
                 ?>
             </div>
         </div>

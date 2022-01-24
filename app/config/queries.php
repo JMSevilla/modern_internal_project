@@ -23,18 +23,18 @@ class Queries
     function RegisterQuery($table, $args)
     {
         if ($args == "user") {
-            $query = "INSERT INTO " . $table . "(id,email,password,istype,firstname,lastname,status,roles,occupation,createdAt,address) VALUES 
+            $query = "INSERT INTO " . $table . "(id,email,password,istype,firstname,lastname,status,roles,occupation,createdAt,address,tokenization) VALUES 
             (default, :email,:password,'2',:fname,:lname,'0',
-            :roles,:occupation,current_timestamp,:address)";
+            :roles,:occupation,current_timestamp,:address, 'none')";
             return $query;
         }
     }
     function RegisterQueryAdmin($table, $args)
     {
         if ($args == "admin") {
-            $query = "INSERT INTO " . $table . "(id,email,password,istype,firstname,lastname,status,roles,occupation,createdAt,address) VALUES 
+            $query = "INSERT INTO " . $table . "(id,email,password,istype,firstname,lastname,status,roles,occupation,createdAt,address,tokenization) VALUES 
             (default, :email,:password,'1',:fname,:lname,'1',
-    :roles,:occupation,current_timestamp,:address)";
+    :roles,:occupation,current_timestamp,:address, 'none')";
             return $query;
         }
     }
@@ -47,27 +47,31 @@ class Queries
             return $sql;
         }
     }
-    function getAllDepartment($table, $args){
-        if($args == "registration/getAllDepartment"){
+    function getAllDepartment($table, $args)
+    {
+        if ($args == "registration/getAllDepartment") {
             $sql = "select distinct roleName from " . $table . "";
             return $sql;
         }
     }
-    function getAlloccupation($table, $args){
-        if($args == "registration/getAlloccupation"){
-            $sql = "select distinct occupationName from ". $table ."";
+    function getAlloccupation($table, $args)
+    {
+        if ($args == "registration/getAlloccupation") {
+            $sql = "select distinct occupationName from " . $table . "";
             return $sql;
         }
     }
-    function setTokenization($args){
-        if($args == "setToken"){
+    function setTokenization($args)
+    {
+        if ($args == "setToken") {
             $sql = "update users set tokenization=:token where email=:email";
             return $sql;
         }
     }
-    function getTokenization($table , $args){
-        if($args == "getToken"){
-            $sql = "select tokenization from ".$table." where email=:email";
+    function getTokenization($table, $args)
+    {
+        if ($args == "getToken") {
+            $sql = "select tokenization from " . $table . " where email=:email";
             return $sql;
         }
     }
@@ -79,7 +83,8 @@ class Server
     {
         return $_SERVER["REQUEST_METHOD"] == "POST";
     }
-    function checkGETServer(){
+    function checkGETServer()
+    {
         return $_SERVER["REQUEST_METHOD"] == "GET";
     }
 }
