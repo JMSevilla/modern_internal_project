@@ -15,6 +15,7 @@ class LoginParams
     public static $password;
     public static $istype;
     public static $status;
+    public static $token;
 }
 
 
@@ -87,5 +88,8 @@ class Database
     public function php_password_encryptor($password)
     {
         return password_hash($password, PASSWORD_DEFAULT);
+    }
+    public function crypto_secure(){
+        return bin2hex(random_bytes(16));
     }
 }

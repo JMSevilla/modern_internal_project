@@ -7,6 +7,8 @@ interface queryInterface
     function RegisterQueryAdmin($table, $args);
     function checkIsType($table, $args);
     function getAllDepartment($table, $args);
+    function setTokenization($args);
+    function getTokenization($table, $args);
 }
 
 class Queries
@@ -54,6 +56,18 @@ class Queries
     function getAlloccupation($table, $args){
         if($args == "registration/getAlloccupation"){
             $sql = "select distinct occupationName from ". $table ."";
+            return $sql;
+        }
+    }
+    function setTokenization($args){
+        if($args == "setToken"){
+            $sql = "update users set tokenization=:token where email=:email";
+            return $sql;
+        }
+    }
+    function getTokenization($table , $args){
+        if($args == "getToken"){
+            $sql = "select tokenization from ".$table." where email=:email";
             return $sql;
         }
     }

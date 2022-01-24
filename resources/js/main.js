@@ -1,6 +1,7 @@
 const env = {
     env_url : 'app/api',
     env_url_get: 'app/api/Controllers/GET/',
+    env_token_url: 'app/api/Controllers/Token/',
     required: [],
     loginRoute : {
         loginHelper : 'loginHelper.php'
@@ -9,6 +10,9 @@ const env = {
         registerHelper : 'registerHelper.php',
         departmentGetter : 'Department.php',
         occupationGetter : 'occupation.php'
+    },
+    tokenization : {
+        tokenRoute : 'tokenization.php'
     },
     jsonHelper : null
 }
@@ -74,6 +78,13 @@ class requestConfiguration extends JSONConfiguration {
             })
         })
     }
+    tokenConfiguration(){
+        return new Promise((resolve) => {
+            return new requestSender().scantokenRequest().then(resp => {
+                return resolve(resp)
+            })
+        })
+    }
 }
 
 class requestValidation {
@@ -135,6 +146,16 @@ class requestSender {
     occupationRequest(){
         return new Promise(resolve =>{
             $.get(env.env_url_get + env.regiterRoute.occupationGetter, (response) => {
+                return resolve(response)
+            })
+        })
+    }
+    scantokenRequest(){
+        return new Promise(resolve => {
+            const req = { 
+                requestToken : true
+            }
+            $.post(env.env_token_url + env.tokenization.tokenRoute, req, (response) => {
                 return resolve(response)
             })
         })
