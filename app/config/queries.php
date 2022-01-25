@@ -25,7 +25,7 @@ class Queries
     {
         if ($args == "user") {
             $query = "INSERT INTO " . $table . "(id,email,password,istype,firstname,lastname,status,roles,occupation,createdAt,address,tokenization) VALUES 
-            (default, :email,:password,'2',:fname,:lname,'0',
+            (default, :email,:password,'2',:fname,:lname,:status,
             :roles,:occupation,current_timestamp,:address, 'none')";
             return $query;
         }
@@ -34,7 +34,7 @@ class Queries
     {
         if ($args == "admin") {
             $query = "INSERT INTO " . $table . "(id,email,password,istype,firstname,lastname,status,roles,occupation,createdAt,address,tokenization) VALUES 
-            (default, :email,:password,'1',:fname,:lname,'1',
+            (default, :email,:password,'1',:fname,:lname,:status,
     :roles,:occupation,current_timestamp,:address, 'none')";
             return $query;
         }

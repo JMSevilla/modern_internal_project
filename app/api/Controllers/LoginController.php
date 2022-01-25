@@ -29,7 +29,8 @@ class LoginController extends Database implements LoginInterface{
                                 
     }
     public function tokenGetter($data){
-        if(Database::php_prepare(Queries::getTokenization("users", "getToken"))){
+        $tokenGetterQuery = new Queries();
+        if(Database::php_prepare($tokenGetterQuery->getTokenization("users", "getToken"))){
             Database::php_dynamics(":email", $data['email']);
             Database::php_exec();
             $getToken = Database::php_fetch_row();

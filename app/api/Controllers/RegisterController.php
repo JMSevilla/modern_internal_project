@@ -52,6 +52,7 @@ class RegisterController extends Database implements RegisterInterface
         Database::php_dynamics(":password", $this->php_password_encryptor($data['password']));
         Database::php_dynamics(":fname", $data['fname']);
         Database::php_dynamics(":lname", $data['lname']);
+        Database::php_dynamics(":status", $data['status']);
         Database::php_dynamics(":roles", $data['roles']);
         Database::php_dynamics(":occupation", $data['occupation']);
         Database::php_dynamics(":address", $data['address']);
@@ -71,6 +72,7 @@ class RegisterController extends Database implements RegisterInterface
         Database::php_dynamics(":password", $this->php_password_encryptor($data['password']));
         Database::php_dynamics(":fname", $data['fname']);
         Database::php_dynamics(":lname", $data['lname']);
+        Database::php_dynamics(":status", $data['status']);
         Database::php_dynamics(":roles", $data['roles']);
         Database::php_dynamics(":occupation", $data['occupation']);
         Database::php_dynamics(":address", $data['address']);

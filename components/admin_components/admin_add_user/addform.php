@@ -45,6 +45,15 @@
         <el-input type="password" placeholder="Confirm Password" clerable v-model="adduserObj.cpass" style="margin-top: 10px; margin-bottom : 10px;"></el-input>
         </el-input>
     </div>
+
+</div>
+<div style="margin-top: 10px; margin-bottom: 10px;">
+    <span>Account Status</span> :
+    <el-switch
+            v-model="adduserObj.istypeswitch"
+            active-text="Activate"
+            inactive-text="Deactivate">
+    </el-switch>
 </div>
 
 <el-button type="primary" v-loading.fullscreen.lock="fullscreenLoading" plain style="float: right; margin-bottom: 20px; margin-top: 10px;" @click="onsave" size="medium">Save</el-button>

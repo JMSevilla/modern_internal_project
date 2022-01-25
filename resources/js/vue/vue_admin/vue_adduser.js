@@ -11,14 +11,15 @@ new Vue({
             email : '',
             password : '',
             cpass : '',
-            address : '',trigger: 1
+            address : '',trigger: 1, istypeswitch : false
         },
         Optionroles: [],
             OptionOccupation : [], fullscreenLoading: false,
         propPageSize : 5,
         propListArray : [],
         searchable : '',
-        page : 5
+        page : 1,
+        listLoading : true
     }),
     created() {
         this.getAllDepartment()
@@ -37,16 +38,15 @@ new Vue({
         }
     },
     methods : {
+        setPage(val) {
+            this.page = val
+        },
         callUserList : function(){
             __constructJS.UserConfiguration().then(res => {
-                let jsonbroke = JSON.parse(res)
-                for(var x = 0; x < jsonbroke.length; x++){
-                    this.propListArray = jsonbroke[x]
-                }
-                // __constructJS.ResponseConfiguration(res).then(__debounce => {
-                //     this.propListArray = __debounce[0]
-                //     console.log(__debounce[0])
-                // })
+                __constructJS.ResponseConfiguration(res).then(__deb => {
+                    this.listLoading = false
+                    this.propListArray = __deb;
+                })
             })
         },
         getAllDepartment: function() {
@@ -69,6 +69,7 @@ new Vue({
             setTimeout(() => {
                 __constructJS.registrationRequest(this.adduserObj)
             .then(response => {
+                console.log(response)
                __constructJS.ResponseConfiguration(response).then(__debounce => {
                    this.fullscreenLoading = false;
                     if(__debounce[0].key == "emptyHanded")
@@ -128,6 +129,9 @@ new Vue({
                             message: 'Kindly wait for the admin approval',
                             offset: 100
                           });
+                         this.getAllDepartment()
+                         this.getAlloccupation()
+                         this.callUserList()
                      }
                     else{
                           alert("Problem Encountered");
