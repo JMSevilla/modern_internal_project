@@ -22,7 +22,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm">
-                <el-card shadow="always">
+                <el-card shadow="always" style="margin-bottom : 40px;">
                     <h3>Information Form</h3>
                     <?php include("components/admin_components/admin_add_user/addform.php"); ?>
                 </el-card>
@@ -30,6 +30,7 @@
             <div class="col-sm">
                 <el-card shadow="always">
                     <h3>List of users</h3>
+                    <?php include("components/admin_components/admin_add_user/userList.php"); ?>
                 </el-card>
             </div>
         </div>

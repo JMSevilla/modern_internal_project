@@ -10,7 +10,10 @@ const env = {
         registerHelper : 'registerHelper.php',
         departmentGetter : 'Department.php',
         occupationGetter : 'occupation.php',
-        sercontentGetter : 'ServicesContent.php'
+        sercontentGetter : 'ServicesContent.php',
+    },
+    adminRoute : {
+        userlistGetter : 'User.php'
     },
     tokenization : {
         tokenRoute : 'tokenization.php'
@@ -86,6 +89,13 @@ class requestConfiguration extends JSONConfiguration {
             })
         })
     }
+    UserConfiguration(){
+        return new Promise(resolve => {
+            return new requestSender().userRequest().then(resp => {
+                return resolve(resp)
+            })
+        })
+    }
 }
 
 class requestValidation {
@@ -140,6 +150,13 @@ class requestSender {
     departmentRequest(){
         return new Promise(resolve => {
             $.get(env.env_url_get + env.regiterRoute.departmentGetter, (response) => {
+                return resolve(response)
+            })
+        })
+    }
+    userRequest(){
+        return new Promise(resolve => {
+            $.get(env.env_url_get + env.adminRoute.userlistGetter, (response) => {
                 return resolve(response)
             })
         })
