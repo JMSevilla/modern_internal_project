@@ -16,7 +16,7 @@ new Vue({
             __constructJS.tokenConfiguration().then(r => {
                __constructJS.ResponseConfiguration(r).then(__debounce => {
                    if(__debounce[0].key === 'admin_exist_token'){
-                       window.location.href = 'http://localhost/modern_web/admin'
+                       window.location.href = 'http://localhost/modern_web/modern_internal_project/admin'
                    }
                })
             })

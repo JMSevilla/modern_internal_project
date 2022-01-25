@@ -141,10 +141,19 @@ class requestSender {
     }
     registerRequest(object) {
         return new Promise(resolve => {
-            $.post(env.env_url + `/helpers/` + env.regiterRoute.registerHelper, object, (response) => {
-                env.required=[];
-                return resolve(response)
-            })
+            if(object.istypeswitch == true){
+                object.istypeswitch = 1
+                $.post(env.env_url + `/helpers/` + env.regiterRoute.registerHelper, object, (response) => {
+                    env.required=[];
+                    return resolve(response)
+                })
+            }else{
+                object.istypeswitch = 0
+                $.post(env.env_url + `/helpers/` + env.regiterRoute.registerHelper, object, (response) => {
+                    env.required=[];
+                    return resolve(response)
+                })
+            }
         })
     }
     departmentRequest(){
