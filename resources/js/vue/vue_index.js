@@ -6,7 +6,7 @@ new Vue({
     created() {
         this.getAllDepartment();
         this.getAlloccupation();
-        this.getServicesContent();
+        // this.getServicesContent();
     },
     mounted(){
         this.tokenScanning();
@@ -16,7 +16,7 @@ new Vue({
             __constructJS.tokenConfiguration().then(r => {
                __constructJS.ResponseConfiguration(r).then(__debounce => {
                    if(__debounce[0].key === 'admin_exist_token'){
-                       window.location.href = 'http://localhost/modern_project/modern_internal_project/admin'
+                       window.location.href = 'http://localhost/modern_web/admin'
                    }
                })
             })
@@ -39,14 +39,14 @@ new Vue({
                 })
             })
         },
-        getServicesContent: function() {
-            __constructJS.servicescontentConfiguration().then(res => {
-                console.log(res);
-                __constructJS.ResponseConfiguration(res).then(r => {
-                    
-                })
-            })
-        },
+        // getServicesContent: function() {
+        //     __constructJS.servicescontentConfiguration().then(res => {
+        //         console.log(res);
+        //         __constructJS.ResponseConfiguration(res).then(r => {
+        //
+        //         })
+        //     })
+        // },
         onnavigateLogin(){
             alert("hello world")
         },

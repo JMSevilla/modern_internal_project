@@ -13,3 +13,4 @@
 <script src="resources/js/vue/vue_admin/vue_admin_nav.js" type="module"></script>
 <script src="resources/js/vue/vue_admin/vue_adduser.js" type="module"></script>
 <script src="resources/js/vue/vue_admin/vue_admin_sidebar.js" type="module"></script>
+<script src="resources/js/main.js" type="module"></script>

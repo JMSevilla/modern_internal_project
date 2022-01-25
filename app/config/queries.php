@@ -9,6 +9,7 @@ interface queryInterface
     function getAllDepartment($table, $args);
     function setTokenization($args);
     function getTokenization($table, $args);
+    function getAllUser($table, $args);
 }
 
 class Queries
@@ -51,6 +52,12 @@ class Queries
     {
         if ($args == "registration/getAllDepartment") {
             $sql = "select distinct roleName from " . $table . "";
+            return $sql;
+        }
+    }
+    function getAllUser($table, $args){
+        if($args == "admin/getAllUser"){
+            $sql = "select * from " . $table . "";
             return $sql;
         }
     }
